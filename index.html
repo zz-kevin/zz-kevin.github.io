@@ -10,6 +10,8 @@
 <meta property="og:description" content="CS senior with IT experience since 2022. See my work and get in touch.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%239b6bff'/%3E%3Cstop offset='.5' stop-color='%235ef2ff'/%3E%3Cstop offset='1' stop-color='%23ff5fae'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='%2303020c' stroke='url(%23g)' stroke-width='4'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Arial' font-weight='700' font-size='24' fill='white'%3EKB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Share+Tech+Mono&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root { --bg:#03020c; --glass:rgba(255,255,255,.05); --stroke:rgba(255,255,255,.12); --fg:#eef0ff; --muted:#a3a7c9; --violet:#9b6bff; --cyan:#5ef2ff; --pink:#ff5fae; }
@@ -22,16 +24,17 @@
 
   .progress { position:fixed; top:0; left:0; height:2px; width:100%; transform-origin:0 50%; transform:scaleX(0); background:linear-gradient(90deg, var(--violet), var(--cyan), var(--pink)); z-index:30; }
 
-  .nebula { position:fixed; inset:0; z-index:-2; filter:blur(90px); opacity:.55; pointer-events:none; }
-  .nebula i { position:absolute; border-radius:50%; mix-blend-mode:screen; animation:float 22s ease-in-out infinite alternate; }
-  .nebula i:nth-child(1) { width:560px; height:560px; background:#6a2cff; top:-160px; left:-120px; }
-  .nebula i:nth-child(2) { width:480px; height:480px; background:#00b8ff; top:35%; right:-160px; animation-delay:-8s; }
-  .nebula i:nth-child(3) { width:420px; height:420px; background:#ff2f8e; bottom:-160px; left:30%; animation-delay:-15s; }
+  .nebula { position:fixed; inset:0; z-index:-2; opacity:.55; pointer-events:none; overflow:hidden; }
+  .nebula i { position:absolute; border-radius:50%; animation:float 22s ease-in-out infinite alternate; will-change:transform; }
+  .nebula i:nth-child(1) { width:860px; height:860px; background:radial-gradient(closest-side, #6a2cff, transparent); top:-310px; left:-270px; }
+  .nebula i:nth-child(2) { width:780px; height:780px; background:radial-gradient(closest-side, #00b8ff, transparent); top:35%; right:-310px; animation-delay:-8s; }
+  .nebula i:nth-child(3) { width:720px; height:720px; background:radial-gradient(closest-side, #ff2f8e, transparent); bottom:-310px; left:25%; animation-delay:-15s; }
   @keyframes float { to { transform:translate(90px, 70px) scale(1.2); } }
   canvas { position:fixed; inset:0; z-index:-1; pointer-events:none; }
 
   .wrap { max-width:1100px; margin:0 auto; padding:24px; }
-  .glass { background:var(--glass); border:1px solid var(--stroke); backdrop-filter:blur(22px); -webkit-backdrop-filter:blur(22px); }
+  .glass { background:rgba(12,10,30,.62); border:1px solid var(--stroke); }
+  nav.glass { backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
 
   nav { display:flex; justify-content:space-between; align-items:center; padding:12px 14px 12px 22px; border-radius:999px; position:sticky; top:16px; z-index:20; }
   nav .logo { font-weight:700; font-size:18px; letter-spacing:-.02em; }
@@ -157,7 +160,7 @@
   }
 
   :root { --violet:#ff2a6d; --cyan:#05d9e8; --pink:#ff2a6d; --y:#fcee0a; --mono:"Share Tech Mono", monospace; }
-  .nebula i:nth-child(1) { background:#7a00ff; } .nebula i:nth-child(2) { background:#05d9e8; } .nebula i:nth-child(3) { background:#ff2a6d; }
+  .nebula i:nth-child(1) { background:radial-gradient(closest-side, #7a00ff, transparent); } .nebula i:nth-child(2) { background:radial-gradient(closest-side, #05d9e8, transparent); } .nebula i:nth-child(3) { background:radial-gradient(closest-side, #ff2a6d, transparent); }
   .grad { background-image:linear-gradient(90deg, var(--y), var(--pink), var(--cyan), var(--y)); }
   .progress { background:linear-gradient(90deg, var(--y), var(--pink), var(--cyan)); }
   .label { font-family:var(--mono); font-weight:400; letter-spacing:.2em; color:var(--y); }
@@ -194,8 +197,8 @@
   .contact { border-radius:4px; }
   .floor { position:fixed; left:-50%; right:-50%; bottom:0; height:100vh; z-index:-1; pointer-events:none; transform:perspective(1500px) rotateX(55deg); transform-origin:50% 100%;
     background:linear-gradient(rgba(255,42,109,.35) 1px, transparent 1px) 0 0/100% 48px, linear-gradient(90deg, rgba(5,217,232,.3) 1px, transparent 1px) 0 0/48px 100%;
-    -webkit-mask:linear-gradient(transparent, #000 45%); mask:linear-gradient(transparent, #000 45%); animation:floor 3s linear infinite; opacity:.7; }
-  @keyframes floor { to { background-position:0 48px, 0 0; } }
+    -webkit-mask:linear-gradient(transparent, #000 45%); mask:linear-gradient(transparent, #000 45%); animation:floor 3s linear infinite; opacity:.7; will-change:transform; }
+  @keyframes floor { to { transform:perspective(1500px) rotateX(55deg) translateY(48px); } }
   .ticker { overflow:hidden; white-space:nowrap; background:var(--y); color:#000; font-family:var(--mono); font-size:13px; padding:7px 0; margin:0 -24px; }
   .ticker div { display:inline-block; animation:tick 30s linear infinite; }
   .ticker span { margin:0 28px; }
